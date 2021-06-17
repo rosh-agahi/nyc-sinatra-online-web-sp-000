@@ -18,7 +18,7 @@ class FiguresController < ApplicationController
 
     @figure.save
     
-    redirect '/figures/index'
+    redirect '/figures'
   end
 
   get '/figures/:id' do
