@@ -41,6 +41,30 @@ class FiguresController < ApplicationController
     erb :'/figures/edit'
   end
   
+   patch '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    @figure.update(name: params["figure"]["name"])
+
+    if params["figure"]["title_ids"].nil?
+      @figure.title_ids = []
+    else
+      @figure.title_ids = params["figure"]["title_ids"]
+    end
+
+    if params["figure"]["landmark_ids"].nil?
+      @figure.landmark_ids = []
+    else
+      @figure.landmark_ids = params["figure"]["landmark_ids"]
+    end
+
+    if !params["landmark"]["name"].empty?
+      @landmark = Landmark.create(name: params["landmark"]["name"], year_completed: params["landmark"]["year"])
+      @figure.landmarks << @landmark
+    end
+    
+    redirect to "/figures/#{@figure.id}"
+  end
+  
   get '/figures' do
     @figures = Figure.all
     erb :'/figures/index'
