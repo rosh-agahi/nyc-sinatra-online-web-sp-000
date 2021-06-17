@@ -8,12 +8,12 @@
 
 <p>Titles</p>
 <% @titles.each do |t| %>
-  <input type="checkbox" id="title_<%= t.id %>" name="figure[title_ids][]" value="<%= t.id %>" <%='checked' if @figure.t.include?(t) %>><%= t.name %></input><br>
+  <input type="checkbox" id="title_<%= t.id %>" name="figure[title_ids][]" value="<%= t.id %>" <%='checked' if @figure.titles.include?(t) %>><%= t.name %></input><br>
 <% end %><br>
 
 <p>Landmarks</p>
 <% @landmarks.each do |l| %>
-  <input type="checkbox" id="landmark_<%= l.id %>" name="figure[landmark_ids][]" value="<%= l.id %>" <%='checked' if @figure.l.include?(l) %>><%= l.name %></input><br>
+  <input type="checkbox" id="landmark_<%= l.id %>" name="figure[landmark_ids][]" value="<%= l.id %>" <%='checked' if @figure.landmarks.include?(l) %>><%= l.name %></input><br>
 <% end %>
 
 <h4>Create New Landmark</h4>
